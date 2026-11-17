@@ -15,7 +15,7 @@ builder.Services.AddDbContext<ConcessionariaContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Concessionaria")));
 
 builder.Services.AddScoped<IVeiculos, VeiculoRepository>();
-
+builder.Services.AddScoped<IMarca, MarcaRepository>();
 
 var app = builder.Build();
 
@@ -27,6 +27,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.MapGet("/api/veiculos", (ConcessionariaContext db) => db.Veiculo.ToList());
+//app.MapGet("/api/veiculos", (ConcessionariaContext db) => db.Veiculo.ToList());
+//app.MapGet("/api/marca", (ConcessionariaContext db) => db.Marca.ToList());
 
 app.Run();
